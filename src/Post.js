@@ -4,7 +4,8 @@ import { MdChatBubbleOutline } from "react-icons/md";
 import { CiRepeat } from "react-icons/ci";
 import { MdFavoriteBorder } from "react-icons/md";
 import { MdPublish } from "react-icons/md";
-
+import { AiFillHeart } from "react-icons/ai";
+import { AiOutlineHeart } from "react-icons/ai";
 import React, { useState } from "react";
 import "./Post.css";
 
@@ -12,7 +13,18 @@ function Post({
   text,
   image = "https://awbi.org/wp-content/uploads/2023/04/1-1.jpg",
 }) {
-  const [favClick, setFavClick] = useState(false);
+  //const [favClick, setFavClick] = useState(false);
+  const [like, setLike] = useState(false);
+  const [showInput, setShowInput] = useState(false);
+  //const [commentChat, setCommentChat] = useState("");
+  const handleLikes = () => {
+    if (!like) {
+      setLike(true);
+    } else {
+      setLike(false);
+    }
+  };
+
   return (
     <div className="post">
       <div className="post__fcBusinessman">
@@ -35,16 +47,31 @@ function Post({
         </div>
         <img src={image} alt="No-image" />
         <div className="post__footer">
-          <MdChatBubbleOutline fontSize="small" />
+          <div onClick={() => setShowInput(true)}>
+            <MdChatBubbleOutline fontSize="small" />
+          </div>
           <CiRepeat />
-          <div
-            onClick={() => setFavClick(true)}
-            style={{ background: favClick ? "red" : "white" }}
-          >
-            {" "}
-            <MdFavoriteBorder />
+          <div>
+            {like ? (
+              <AiFillHeart
+                className="text-danger"
+                onClick={handleLikes}
+                style={{ color: "red" }}
+              />
+            ) : (
+              <AiOutlineHeart
+                onClick={handleLikes}
+                style={{ color: "black" }}
+              />
+            )}
           </div>
           <MdPublish />
+        </div>
+        <div style={{ display: "flex" }}>
+          {showInput && <input type="text"></input>}
+          {showInput && (
+            <button onClick={() => setShowInput(false)}>Post</button>
+          )}
         </div>
       </div>
     </div>
