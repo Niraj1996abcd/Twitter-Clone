@@ -32,3 +32,13 @@
 font-size: 18px;
 font-weight: 800;
 }
+/* div.widgets {
+    margin: 4px, 4px;
+    padding: 4px;
+    background-color:none;
+    min-width: 10vw;
+    height: 700px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    text-align: justify;
+} */

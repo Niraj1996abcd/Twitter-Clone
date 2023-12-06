@@ -11,19 +11,41 @@ import { MdPermIdentity } from "react-icons/md";
 import { FiMoreHorizontal } from "react-icons/fi";
 
 import SidebarOptions from "./SidebarOptions";
+import { Link } from "react-router-dom";
 
 function Sidebar() {
   return (
     //BEM convention
     <div className="sidebar">
       <BsTwitter className="sidebar__twitterIcon" />
-      <SidebarOptions active={AiOutlineHome} Icon={AiOutlineHome} text="Home" />
-      <SidebarOptions Icon={AiOutlineSearch} text="Explore" />
-      <SidebarOptions Icon={MdNotificationsNone} text="Notifications" />
-      <SidebarOptions Icon={AiOutlineMail} text="Message" />
-      <SidebarOptions Icon={BsBookmark} text="Bookmarks" />
-      <SidebarOptions Icon={LiaClipboardListSolid} text="Lists" />
-      <SidebarOptions Icon={MdPermIdentity} text="Profile" />
+      <Link to="/" style={{ textDecoration: "none" }}>
+        <SidebarOptions
+          active={AiOutlineHome}
+          Icon={AiOutlineHome}
+          text="Home"
+        />
+      </Link>
+      <Link to="/explore" style={{ textDecoration: "none", color: "black" }}>
+        <SidebarOptions Icon={AiOutlineSearch} text="Explore" />
+      </Link>
+      <Link
+        to="/notification"
+        style={{ textDecoration: "none", color: "black" }}
+      >
+        <SidebarOptions Icon={MdNotificationsNone} text="Notifications" />
+      </Link>
+      <Link to="message" style={{ textDecoration: "none", color: "black" }}>
+        <SidebarOptions Icon={AiOutlineMail} text="Message" />
+      </Link>
+      <Link to="/bookmarks" style={{ textDecoration: "none", color: "black" }}>
+        <SidebarOptions Icon={BsBookmark} text="Bookmarks" />
+      </Link>
+      <Link to="lists" style={{ textDecoration: "none", color: "black" }}>
+        <SidebarOptions Icon={LiaClipboardListSolid} text="Lists" />
+      </Link>
+      <Link to="/profile" style={{ textDecoration: "none", color: "black" }}>
+        <SidebarOptions Icon={MdPermIdentity} text="Profile" />
+      </Link>
       <SidebarOptions Icon={FiMoreHorizontal} text="More" />
       <button className="sidebar__tweet" variant="outlined">
         Tweet
